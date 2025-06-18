@@ -1,11 +1,15 @@
+# app/routes/jobsearch.py
 from fastapi import APIRouter
-from app.schemas import MessageRequest
-from app.services.ai_agent import generate_message
+from typing import List
+from app.data.mock_data import mock_jobs, mock_user
+from app.schemas import Job, User
 
-router = APIRouter()
+jobsearch_router = APIRouter()
 
-@router.post("/generate_message")
-def get_message(payload: MessageRequest):
-    message =  generate_message(payload)
-    return {"message": message}
+@jobsearch_router.get("/jobs", response_model=List[Job])
+def get_jobs():
+    return mock_jobs
 
+@jobsearch_router.get("/user", response_model=User)
+def get_user():
+    return mock_user

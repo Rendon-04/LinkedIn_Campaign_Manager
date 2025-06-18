@@ -1,0 +1,210 @@
+:root {
+    --color-brand: #0a66c2;
+    --color-white: white;
+    --color-gray: #666666;
+    --color-soft-gray: #5f6163;
+    --color-medium-white: #eef3f8;
+    --color-main-bg: #f3f2ef;
+    --screen-lg: 1024px;
+    --screen-xl: 1280px;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--color-main-bg);
+  }
+  
+  header {
+    background-color: var(--color-white);
+    box-shadow: 0px 3px 5px 0px rgba(186, 186, 186, 1);
+    height: 52px;
+  }
+  
+  .global-nav__container {
+    display: flex;
+    height: 100%;
+    max-width: var(--screen-lg);
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .global-nav__searcher {
+    display: flex;
+    width: calc(320px + 120px);
+  }
+  
+  .global-nav__logo {
+    display: inline-block;
+    height: 34px;
+    width: 34px;
+    margin-right: 6px;
+  }
+  
+  .searcher-container {
+    height: 34px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .fa-magnifying-glass {
+    display: inline-block;
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    color: var(--color-gray);
+  }
+  
+  .global-nav__search-bar {
+    height: 100%;
+    width: 280px;
+    border: 1px solid var(--color-medium-white);
+    background-color: rgb(242, 242, 242);
+    padding: 0 8px 0 40px;
+    outline: none;
+    transition: width 0.2s ease-in-out;
+  }
+  
+  .global-nav__search-bar:active,
+  .global-nav__search-bar:focus {
+    width: 100%;
+  }
+  
+  nav > ul {
+    display: flex;
+  }
+  
+  .global-nav__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 12px;
+    color: var(--color-gray);
+    text-decoration: none;
+    font-size: 0.75rem;
+  }
+  
+  .global-nav__item > i,
+  .global-nav__item svg {
+    font-size: 1.5rem;
+  }
+  
+  .global-nav__item > span {
+    font-size: 0.65rem;
+    margin-top: 2px;
+  }
+  
+  .global-nav__item:hover {
+    color: black;
+  }
+  
+  .with-tooltip {
+    position: relative;
+  }
+  
+  .with-tooltip::after {
+    background-color: var(--color-brand);
+    border-radius: 5px;
+    color: var(--color-white);
+    content: attr(data-tooltip);
+    font-size: calc((14 / 16) * 1rem);
+    height: fit-content;
+    left: -10%;
+    padding: 4px 12px;
+    position: absolute;
+    text-align: center;
+    top: 115%;
+    transform: scale(0);
+    transform-origin: top;
+    transition: all 0.15s ease-in-out;
+    min-width: max-content;
+    z-index: 1;
+    filter: opacity(0.9);
+  }
+  
+
+
+  /* Profile section (Me) */
+  .global-nav__me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 12px;
+    justify-content: center;
+  
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--color-gray);
+      text-decoration: none;
+    }
+  
+    .profile-img-wrapper {
+      height: 24px;               
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+  
+    .profile-img {
+      width: 34px;               
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 3px;
+    }
+  
+    .profile-label {
+      display: flex;
+      align-items: center;
+      font-size: 0.65rem;
+
+  
+      span {
+        margin-right: 2px;
+        color: inherit;
+      }
+  
+      .dropdown-arrow {
+        font-size: 0.5rem;
+        margin-top: 1px;
+      }
+    }
+
+    .profile-label-wrapper {
+        margin-top: 4px;
+    }
+      
+  
+    &:hover {
+      color: black;
+    }
+  }
+  
+  
+
+  li.active .global-nav__item {
+    border-bottom: 2px solid black;
+    color: black;
+  } 
+
+  li.active .global-nav__item > span {
+    color: black;
+  }
+  
+  li.active .global-nav__item > svg {
+    color: black;
+  }
+  

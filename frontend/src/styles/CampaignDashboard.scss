@@ -1,0 +1,56 @@
+/* CampaignDashboard.scss */
+
+.dashboard-container {
+  padding: 2rem;
+  background-color: #f3f2ef;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: system-ui, sans-serif;
+}
+
+.dashboard-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.message-flow-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.job-details-wrapper {
+  margin-bottom: 2rem;
+}
+
+.button-primary {
+  background-color: #0a66c2;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+
+  &:hover {
+    background-color: #004182;
+  }
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #dddfe2;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
