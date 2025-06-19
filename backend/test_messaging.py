@@ -5,7 +5,6 @@ from app.data.mock_data import mock_user, mock_jobs
 client = TestClient(app)
 
 def test_generate_message_route():
-    # Arrange: create a valid payload from mock data
     payload = {
         "recipient_name": "Alicia Patel",
         "tone": "Professional",
@@ -13,11 +12,9 @@ def test_generate_message_route():
         "job": mock_jobs[0]
     }
 
-    # Act: make a POST request to the /generate_message endpoint
     response = client.post("/generate_message", json=payload)
     print(response.json())
 
-    # Assert: check if request was successful and content returned
     assert response.status_code == 200
     assert "message" in response.json()
     assert isinstance(response.json()["message"], str)

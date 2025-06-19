@@ -6,7 +6,6 @@ import store from './store'
 import App from './App'
 import './styles/app.scss'
 
-// ✅ Import your new context
 import { UserProvider } from './context/UserContext'
 
 console.log("✅ index.js is running")

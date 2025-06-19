@@ -15,7 +15,6 @@ const Navbar = () => {
   return (
     <header>
       <div className="global-nav__container">
-        {/* Logo + Search */}
         <div className="global-nav__searcher">
           <a href="/" className="with-tooltip" data-tooltip="Go to home">
             <figure>
@@ -36,7 +35,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Nav Items */}
         <nav>
           <ul>
             <li>
@@ -70,7 +68,6 @@ const Navbar = () => {
               </a>
             </li>
 
-            {/* ✅ Campaign Section */}
             <li className='active'>
               <a href="#" className="global-nav__item with-tooltip" data-tooltip="Campaigns">
               <FaRobot />
@@ -78,7 +75,6 @@ const Navbar = () => {
               </a>
             </li>
 
-            {/* ✅ Profile Section */}
             <li className="global-nav__me">
             <a href="#" className="with-tooltip" data-tooltip="Me">
                 <div className="profile-img-wrapper">

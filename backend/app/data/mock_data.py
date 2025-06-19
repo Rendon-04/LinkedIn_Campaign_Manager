@@ -1,5 +1,3 @@
-# app/data/mock_data.py
-
 mock_user = {
     "name": "Ivan Rendon",
     "job_goal": "Software Engineer",

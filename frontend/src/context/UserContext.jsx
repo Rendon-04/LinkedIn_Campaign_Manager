@@ -15,10 +15,6 @@ export const UserProvider = ({ children }) => {
     };
     setUser(mockUser);
 
-    //For later use when a user is logged in
-    // axios.get("http://localhost:8000/user").then(res => {
-    //   setUser(res.data);
-    // });
   }, []);
 
   return (

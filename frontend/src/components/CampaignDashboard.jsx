@@ -1,4 +1,3 @@
-// CampaignDashboard.jsx
 import React, { useState } from 'react';
 import JobList from './JobList';
 import JobDetails from './JobDetails';

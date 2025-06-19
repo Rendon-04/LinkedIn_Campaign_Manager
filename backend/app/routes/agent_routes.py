@@ -1,4 +1,3 @@
-# app/routes/agent_routes.py
 from fastapi import APIRouter
 from pydantic import BaseModel
 from datetime import datetime
@@ -10,7 +9,6 @@ from app.services.ai_agent import generate_message as generate_ai_message
 
 agent_router = APIRouter()
 
-# --- Strategy Route ---
 @agent_router.get("/strategy")
 def get_strategy():
     return {
@@ -22,7 +20,6 @@ def get_strategy():
         ]
     }
 
-# --- Actions Route ---
 class ActionRequest(BaseModel):
     user_id: int
     action: str
@@ -32,7 +29,6 @@ class ActionRequest(BaseModel):
 def log_action(payload: ActionRequest):
     return {"status": "success", "message": "Action logged"}
 
-# --- Next Steps Route ---
 @agent_router.get("/next_steps")
 def get_next_steps():
     return {
@@ -43,7 +39,6 @@ def get_next_steps():
         ]
     }
 
-# --- Message Generation Route ---
 @agent_router.post("/generate_message")
 def generate_message_route(payload: MessageRequest):
     try:
