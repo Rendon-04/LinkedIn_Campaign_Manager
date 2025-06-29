@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import JobList from './JobList';
 import JobDetails from './JobDetails';
 import MessageForm from './MessageForm';
@@ -12,6 +13,17 @@ import '../styles/CampaignDashboard.scss';
 const CampaignDashboard = () => {
   const [selectedJob, setSelectedJob] = useState(null);
   const [message, setMessage] = useState('');
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:8000/jobsearch/user/1')
+      .then((res) => {
+        console.log("✅ Loaded user:", res.data);
+        setUser(res.data);
+      })
+      .catch((err) => console.error("Failed to load user:", err));
+  }, []);
 
   return (
     <div className="dashboard-container">
@@ -43,13 +55,15 @@ const CampaignDashboard = () => {
         </div>
       )}
 
-      {selectedJob && message === 'trigger' && (
-        <MessageForm job={selectedJob} setMessage={setMessage} />
+      {selectedJob && message === 'trigger' && user && (
+        <MessageForm job={selectedJob} user={user} setMessage={setMessage} />
       )}
 
-      {selectedJob && message && message !== 'trigger' && (
+      {selectedJob && message && message !== 'trigger' && user && (
         <MessageComposerModal
           message={message}
+          user={user}
+          job={selectedJob}
           onClose={() => setMessage('')}
         />
       )}

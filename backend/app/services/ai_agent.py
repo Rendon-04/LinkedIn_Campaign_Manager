@@ -12,20 +12,25 @@ if not api_key:
 
 client = OpenAI(api_key=api_key)
 
-
-def generate_message(payload: MessageRequest):
+def generate_message(payload: MessageRequest, history=None, outcome=None):
     prompt = f"""
-    You are a job search assistant. Help {payload.user.name}, a {payload.user.job_goal}, write a {payload.tone.lower()} networking message to {payload.recipient_name} about the job at {payload.job.company}.
+You are a helpful job search assistant helping {payload.user.name}, a {payload.user.job_goal}, connect with {payload.recipient_name} about a job at {payload.job.company}.
+    
+Job description: {payload.job.description}
+User skills: {', '.join(payload.user.skills)}
+Tone: {payload.tone}
 
-    Job description: {payload.job.description}
-    User skills: {', '.join(payload.user.skills)}
+"""
+    if history:
+        prompt += f"\nRecent user actions:\n" + "\n".join([f"- {a.action}" for a in history[:3]])
 
-    Generate a 3-4 sentence outreach message.
-    """
+    if outcome:
+        prompt += f"\nLast job outcome: {outcome.outcome}"
 
-    response = client.chat.completions.create(model="gpt-4",
-    messages=[
-        {"role": "user", "content": prompt}
-    ])
+    prompt += "\n\nGenerate a short 3-4 sentence networking message that sounds natural and actionable."
 
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[{"role": "user", "content": prompt}]
+    )
     return response.choices[0].message.content

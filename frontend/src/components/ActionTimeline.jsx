@@ -7,7 +7,7 @@ const ActionTimeline = () => {
   const [actionLog, setActionLog] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/next_steps')
+    axios.get('http://localhost:8000/agent/next_steps/1')
       .then(res => setSteps(res.data.steps))
       .catch(err => console.error("Error fetching next steps:", err));
   }, []);
@@ -18,7 +18,7 @@ const ActionTimeline = () => {
       action: 'Messaged a recruiter',
       timestamp: new Date().toISOString()
     };
-    await axios.post('http://localhost:8000/actions', newAction);
+    await axios.post('http://localhost:8000/agent/actions', newAction);
     setActionLog(prev => [...prev, newAction]);
   };
 

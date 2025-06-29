@@ -6,7 +6,7 @@ const StrategyCard = () => {
   const [goals, setGoals] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/strategy')
+    axios.get('http://localhost:8000/agent/strategy/1')
       .then(res => setGoals(res.data.goals))
       .catch(err => console.error("Error fetching strategy:", err));
   }, []);

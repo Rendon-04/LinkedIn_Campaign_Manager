@@ -6,7 +6,7 @@ const JobList = ({ onSelectJob }) => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/jobs')
+    axios.get('http://localhost:8000/jobsearch/jobs')
       .then(res => setJobs(res.data))
       .catch(err => console.error("Error fetching jobs:", err));
   }, []);

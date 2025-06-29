@@ -2,18 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/MessageForm.scss';
 
-const MessageForm = ({ job, setMessage }) => {
-
-  const user = {
-    name: 'Ivan Rendon',
-    job_goal: 'Software Engineer',
-    industry: 'Tech',
-    skills: ['React', 'FastAPI', 'PostgreSQL'],
-  };
-
+const MessageForm = ({ job, user, setMessage }) => {
   const [formData, setFormData] = useState({
     recipient_name: '',
-    tone: 'Professional',
+    tone: 'Friendly',
   });
 
   const handleChange = (e) => {
@@ -24,6 +16,11 @@ const MessageForm = ({ job, setMessage }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user || !job) {
+      console.error('Missing user or job.');
+      return;
+    }
+
     const payload = {
       recipient_name: formData.recipient_name,
       tone: formData.tone,
@@ -32,12 +29,19 @@ const MessageForm = ({ job, setMessage }) => {
     };
 
     try {
-      const res = await axios.post('http://localhost:8000/generate_message', payload);
+      const res = await axios.post(
+        "http://localhost:8000/agent/generate_message",
+        payload
+      );
       setMessage(res.data.message);
     } catch (err) {
       console.error('Error generating message:', err);
     }
   };
+  console.log("user:", user);
+  console.log("job:", job);
+
+
 
   return (
     <form className="message-form" onSubmit={handleSubmit}>
@@ -63,4 +67,3 @@ const MessageForm = ({ job, setMessage }) => {
 };
 
 export default MessageForm;
-
